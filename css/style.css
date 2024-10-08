@@ -26,3 +26,16 @@ main {
 .offcanvas-top{
     height: fit-content;
 }
+
+.card {
+    background-color: transparent; 
+    border: none; 
+  }
+
+  .fa-star {
+    color: white; 
+}
+
+.fa-star.checked {
+    color: gold;
+}
