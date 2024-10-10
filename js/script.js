@@ -42,6 +42,14 @@ function filterMovie() {
     const inputValue = input.value.toLowerCase();
     container.innerHTML = "";
 
+    if (inputValue === "") {
+        container.innerHTML = `<p class="p-3 text-white bg-primary-subtle border border-primary-subtle rounded-3">Título no encontrado</p>`;
+        return;
+    }
+
+
+    let found = false;
+
     movies.forEach((movie) => {
         if (
             movie.title.toLowerCase().includes(inputValue) || 
@@ -56,7 +64,7 @@ function filterMovie() {
       data-year="${movie.year}" 
            data-runtime="${movie.runtime}" 
            data-budget="${movie.budget}" 
-           data-revenue="${movie.revenue}">>
+           data-revenue="${movie.revenue}">
         <div class="card-body d-flex justify-content-between align-items-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
           <div >
             <h5 class="card-title text-white fw-bold">${movie.title}</h5>  
@@ -69,8 +77,13 @@ function filterMovie() {
    </div>
 </div>
             `;
-        }
+        found= true;
+    } 
     });
+
+    if (!found || ''){
+        container.innerHTML=`<p class="p-3 text-white bg-primary-subtle border border-primary-subtle rounded-3">Título no encontrado</p>`;
+    }
 
 
      const movieCards = document.querySelectorAll('.movie-card');
